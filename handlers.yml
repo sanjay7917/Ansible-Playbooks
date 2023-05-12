@@ -1,0 +1,12 @@
+--- # Handler Playbook
+- hosts: demo
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks: 
+    - name: installing nginx
+      action: apt name=nginx state=present
+      notify: stop nginx
+  handlers:
+    - name: stop nginx
+      action: service name=nginx state=stopped

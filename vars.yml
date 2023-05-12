@@ -1,0 +1,10 @@
+--- # Variable Playbook
+- hosts: demo
+  user: ansible
+  become: yes
+  connection: ssh
+  vars:
+    pkgname: nginx #defining variable
+  tasks: 
+    - name: installing nginx
+      action: apt name="{{pkgname}}" state=present

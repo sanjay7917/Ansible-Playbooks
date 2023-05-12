@@ -1,0 +1,8 @@
+--- # Task Playbook
+- hosts: demo
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks: 
+    - name: installing nginx
+      action: apt name=nginx state=present

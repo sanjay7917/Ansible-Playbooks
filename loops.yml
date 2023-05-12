@@ -1,0 +1,13 @@
+--- # Loop Playbook
+- hosts: demo
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks: 
+    - name: installing nginx
+      user: name='{{item}}' state=present
+      with_items:
+              - abc
+              - ijk
+              - pqr
+              - xyz
