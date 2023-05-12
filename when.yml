@@ -1,0 +1,12 @@
+--- # When Condition Playbook
+- hosts: demo
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+      - name: httpd in debian family
+        command: apt install nginx -y
+        when: ansible_os_family == "Debian"
+      - name: httpd in redhat family
+        command: yum install nginx -y
+        when: ansible_os_family == "Redhat"

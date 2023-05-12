@@ -1,0 +1,3 @@
+# THIS CODE WORKS, BUT IT SHOWS ERROR IN VS CODE i.e COMMENTED
+# - name: installing nginx
+#   apt: pkg="{{pkgname}}" state=latest

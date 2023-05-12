@@ -1,0 +1,12 @@
+--- # Vault Encryption Playbook
+- hosts: demo
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+      - name: nginx in debian family
+        command: apt install nginx -y
+        when: ansible_os_family == "Debian"
+      - name: nginx in redhat family
+        command: yum install nginx -y
+        when: ansible_os_family == "Redhat"
