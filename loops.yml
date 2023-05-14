@@ -11,3 +11,16 @@
               - ijk
               - pqr
               - xyz
+- hosts: demo
+  user: ansible
+  become: yes
+  connection: ssh
+  vars:
+    pkg:
+     - vsftpd
+     - tree
+  tasks: 
+    - 
+      name: 'installing'
+      apt: name="{{ item }}" state=present
+      with_items: "{{ pkg }}"

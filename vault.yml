@@ -10,3 +10,10 @@
       - name: nginx in redhat family
         command: yum install nginx -y
         when: ansible_os_family == "Redhat"
+
+#ansible-vault encrypt vault.yml
+#ansible-vault edit vault.yml
+#ansible-vault rekey vault.yml
+#ansible-vault decrypt vault.yml
+#ansible-vault encrypt vault.yml --output enc_inven.txt
+#ansible-vault view enc_inven.txt

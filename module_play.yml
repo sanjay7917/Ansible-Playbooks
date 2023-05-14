@@ -1,0 +1,34 @@
+# ansible webservers -m service -a "name=jenkins state=started"
+# ansible webservers -m ping
+# ansible webservers -m command -a "/sbin/reboot -t now"
+---
+# - hosts: prod
+#   user: ansible
+#   become: yes
+#   connection: ssh
+#   tasks:
+#     - 
+#       name: "test mod"
+#       command: touch /tmp/test.txt
+# - hosts: prod
+#   user: ansible
+#   become: yes
+#   connection: ssh
+#   tasks:
+#     - 
+#       name: "Lineinfile"
+#       lineinfile: path=/tmp/test.txt line="ASDSADASDAS"
+- hosts: prod
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+    - 
+      name: "Installing Multiple Package"
+      action:
+        apt: 
+          name:
+            - apache2
+            - nginx
+        state: latest
+

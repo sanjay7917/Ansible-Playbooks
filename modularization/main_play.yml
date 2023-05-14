@@ -1,0 +1,18 @@
+--- # Include, File separation & Modularization Playbook
+- hosts: prod
+  user: ansible
+  become: yes
+  connection: ssh
+  vars_files: 
+      - vars.yml
+  tasks: #First Create task directory
+    - name: "Crate Task"
+      command: mkdir /tmp/task
+- hosts: prod
+  user: ansible
+  become: yes
+  connection: ssh
+  vars_files: 
+      - vars.yml
+  tasks: #First Create task directory
+    - include: task.yml

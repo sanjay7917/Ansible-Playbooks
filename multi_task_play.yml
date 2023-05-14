@@ -1,0 +1,24 @@
+--- # Multi Task Playbook
+- hosts: web
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+    - 
+      name: "creating dummy file on webserver1"
+      command: touch /tmp/file_on_webserver1
+    - 
+      name: "copy hosts files in tmp folder"
+      command: cp /etc/hosts /tmp/myhosts
+
+- hosts: sql
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+    - 
+      name: "creating dummy file on sqlserver1"
+      command: touch /tmp/file_on_sqlserver1
+    - 
+      name: "copy hosts files in tmp folder"
+      command: cp /etc/hosts /tmp/myhosts

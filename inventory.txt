@@ -1,0 +1,14 @@
+webserver ansible_host=172.31.40.4 ansible_ssh_pass=123 ansible_connection=ssh ansible_port=22 ansible_user=ansible
+sqlserver ansible_host=172.31.35.19 ansible_ssh_pass=123 ansible_connection=ssh ansible_port=22 ansible_user=ansible
+
+[webs]
+webserver
+
+[sqls]
+sqlserver
+
+[production:children]
+webs
+sqls
+
+#ansible production -m ping -i inventor.txt

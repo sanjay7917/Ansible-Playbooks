@@ -1,0 +1,13 @@
+--- # Linear and Free Strategies
+- hosts: web,sql
+  user: ansible
+  become: yes
+  connection: ssh
+  # strategy: Linear #all hosts will run each task before any host starts the next task
+  strategy: free #the host does not depend on each other to complete tasks
+  # serial: 1
+  tasks:
+    - name: 'first task'
+      apt: name='apache2' state='present'
+    - name: 'second task'
+      command: touch /tmp/strategy_task.txt

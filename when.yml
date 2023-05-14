@@ -10,3 +10,30 @@
       - name: httpd in redhat family
         command: yum install nginx -y
         when: ansible_os_family == "Redhat"
+- hosts: prod
+  user: ansible
+  become: yes
+  connection: ssh
+  vars: 
+    age: 11
+  tasks: 
+    - 
+      name: 'creating file using variable'
+      command: touch /tmp/18.txt
+      when: age == 18
+    - 
+      name: 'creating file using variable'
+      command: touch /tmp/grater_then_18.txt
+      when: age > 18
+    - 
+      name: 'creating file using variable'
+      command: touch /tmp/less_then_10.txt
+      when: age < 10
+    - 
+      name: 'creating file using variable'
+      command: touch /tmp/between_10_and_18.txt
+      when: age > 10 and age < 18
+    - 
+      name: 'creating file using variable'
+      command: touch /tmp/10_or_11.txt
+      when: age == 10 or age == 11

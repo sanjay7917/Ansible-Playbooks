@@ -1,0 +1,21 @@
+--- # Lookup
+#Lookups for CSV
+- hosts: webserver
+  user: ansible
+  become: yes
+  connection: ssh
+  vars:
+     ansible_ssh_pass: "{{ lookup('csvfile', 'webserver file=credentials.csv delimiter=,') }}"
+  tasks:
+  - name: create a dummy file on webserver
+    command: touch /tmp/csv_lookups.txt
+#Lookups For INI format
+- hosts: webserver
+  user: ansible
+  become: yes
+  connection: ssh
+  vars:
+    ansible_ssh_pass: "{{ lookup('ini', 'password section=webserver file=credentials.ini') }}"
+  tasks:
+  - name: create a dummy file on webserver
+    command: touch /tmp/lookups_ini.txt

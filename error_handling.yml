@@ -1,0 +1,14 @@
+--- # Error Handling
+- hosts: web,sql
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+    - #In that case the first task would fail and Ansible would terminate the execution
+      name: 'first task'
+      command: touch /tmp/task/task1.txt
+      ignore_errors: True
+    - #You can use ignore_errors to continue to the next task in spite of the failure
+      name: 'second task'
+      command: touch /tmp/task2.txt
+      

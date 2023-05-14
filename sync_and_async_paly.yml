@@ -1,0 +1,23 @@
+--- # Synchronous and Asynchronous Actions and Polling
+- hosts: prod
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+    - name: "Synchronous"
+      command: sleep 60
+    - name: "Second Task"
+      command: touch /tmp/second_task.txt
+- hosts: prod
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks: 
+    - 
+      name: 'Asynchronous'
+      command: sleep 60
+      async: 70 #async = Maximum runtime. The task will timeout if it exceeds the limit of this parameter.
+      poll: 35 #poll = This parameter tells how frequently you would like to poll for status (poll equal to 0 (FIRE-AND-FORGET))
+    - 
+      name: 'second task'
+      command: touch /tmp/second_2_task.txt
